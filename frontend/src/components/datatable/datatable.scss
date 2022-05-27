@@ -1,0 +1,73 @@
+@import '../../sass/styles.scss';
+
+.datatable {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+
+  .datagrid {
+    max-width: 1800px;
+    background-color: $secondary-bg-color;
+    box-shadow: $base-box-shadow;
+    border-radius: $lg-border-radius;
+  }
+
+  .MuiDataGrid-columnHeaders {
+  }
+
+  .MuiDataGrid-columnHeader {
+    .MuiDataGrid-columnHeaderTitle {
+      font-weight: 600;
+      font-size: 16px;
+      font-family: $heading-font-family;
+      color: $secondary-font-color;
+    }
+  }
+
+  .MuiDataGrid-cell {
+    color: $base-font-color;
+    font-family: $secondary-font-family;
+  }
+
+  .cellWithStatus {
+    width: 85px;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 5px;
+    background-color: rgba(0, 128, 0, 0.15);
+    color: white;
+    font-weight: 600;
+
+    &.Planlagt {
+      background-color: $base-accent-color;
+    }
+    &.Pågår {
+      background-color: $secondary-accent-color;
+    }
+    &.Fullført {
+      background-color: $tertiary-accent-color;
+    }
+  }
+
+  .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .viewButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      background-color: $secondary-accent-color;
+      color: $secondary-bg-color;
+      cursor: pointer;
+    }
+
+    .deleteButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      background-color: crimson;
+      color: $secondary-bg-color;
+      cursor: pointer;
+    }
+  }
+}

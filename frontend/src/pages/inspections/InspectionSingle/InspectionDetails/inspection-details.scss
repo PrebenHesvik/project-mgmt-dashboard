@@ -1,0 +1,90 @@
+@import '../../../../sass/styles.scss';
+
+.inspection-details {
+  padding: $medium-spacing;
+  box-shadow: $base-box-shadow;
+  max-width: 800px;
+  min-width: 800px;
+  display: flex;
+  justify-content: space-around;
+  background-color: $secondary-bg-color;
+  margin-bottom: $medium-spacing;
+  border-radius: $md-border-radius;
+  position: relative;
+
+  .left {
+    flex: 1;
+    border-right: 1px solid $base-bg-color;
+
+    .inspection-details-info {
+      display: flex;
+      margin-bottom: $medium-spacing;
+
+      .info-group {
+        padding: 0;
+        margin-right: $medium-spacing;
+      }
+
+      .info-header {
+        font-weight: 700;
+        font-size: 13px;
+        color: $secondary-accent-color;
+        margin-top: 0;
+      }
+
+      .info-text {
+        color: $secondary-font-color;
+        font-weight: 600;
+        padding: 0px;
+        margin-top: $small-spacing;
+        font-size: 17px;
+      }
+    }
+
+    .status {
+      width: 85px;
+      padding: $xs-spacing $base-spacing;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: $base-box-shadow;
+      text-align: center;
+      color: white;
+    }
+
+    .Planlagt {
+      background-color: $base-accent-color;
+    }
+
+    .Pågår {
+      background-color: $secondary-accent-color;
+    }
+
+    .Fullført {
+      background-color: $tertiary-accent-color;
+    }
+  }
+  .right {
+    flex: 1;
+    padding-left: $medium-spacing;
+    border-left: 1px solid darken($base-bg-color, 10%);
+
+    .description-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: $secondary-accent-color;
+    }
+
+    .description {
+      font-style: italic;
+    }
+  }
+
+  svg {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    color: $secondary-accent-color;
+    font-size: 17px;
+    cursor: pointer;
+  }
+}

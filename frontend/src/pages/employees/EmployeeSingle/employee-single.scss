@@ -1,0 +1,58 @@
+@import '../../../sass/styles.scss';
+#employee-single-page {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-content: center;
+  min-width: 100%;
+  padding: $large-spacing;
+
+  .button-container {
+    margin-bottom: $medium-spacing;
+    display: flex;
+    justify-content: center;
+  }
+
+  .employee-details {
+    background-color: $secondary-bg-color;
+    padding: $large-spacing;
+    margin-right: $large-spacing;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: $md-border-radius;
+    box-shadow: $base-box-shadow;
+    position: relative;
+
+    .name {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: $small-spacing;
+    }
+
+    .position {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: $medium-spacing;
+    }
+
+    .info {
+      display: flex;
+      margin-bottom: $medium-spacing;
+      //border: 1px solid blue;
+      width: 250px;
+
+      svg {
+        color: $secondary-accent-color;
+        margin-right: $small-spacing;
+      }
+    }
+    .edit-button {
+      color: $secondary-accent-color;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+    }
+  }
+}

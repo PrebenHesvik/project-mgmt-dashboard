@@ -1,0 +1,83 @@
+@import "../../../sass/styles.scss";
+#customer-single-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  min-width: 100%;
+  padding: $large-spacing;
+  min-width: 100% !important;
+
+  .customer-details {
+    background-color: $secondary-bg-color;
+    color: $secondary-font-color;
+    padding: $large-spacing;
+    border-radius: $md-border-radius;
+    box-shadow: $base-box-shadow;
+    position: relative;
+
+    .header {
+      margin-bottom: $medium-spacing;
+
+      .name {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: $small-spacing;
+      }
+
+      .region {
+        text-align: center;
+        font-style: italic;
+      }
+    }
+
+    .body {
+      margin-bottom: $medium-spacing;
+      .info {
+        display: flex;
+        font-family: "roboto";
+        margin-bottom: $small-spacing;
+
+        svg {
+          margin-right: $small-spacing;
+          color: $secondary-accent-color;
+        }
+
+        span {
+          margin-right: 3px;
+        }
+      }
+    }
+
+    .updated-by {
+      position: absolute;
+      bottom: 30px;
+      right: 10px;
+      font-size: 14px;
+      color: $tertiary-font-color;
+    }
+
+    .created-by {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 14px;
+      color: $tertiary-font-color;
+    }
+
+    span {
+      margin-right: 3px;
+    }
+    .key-value {
+      color: $secondary-accent-color;
+      font-weight: 700;
+    }
+    .edit-button {
+      color: $secondary-accent-color;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+    }
+  }
+}

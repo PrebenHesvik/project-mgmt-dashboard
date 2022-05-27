@@ -1,0 +1,57 @@
+@import "../../../../sass/styles.scss";
+
+.comments {
+  min-width: 800px;
+  background-color: $secondary-bg-color;
+  padding: $medium-spacing;
+  display: flex;
+  flex-direction: column;
+  border-radius: $md-border-radius;
+
+  .title {
+    color: $secondary-accent-color;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: $medium-spacing;
+  }
+
+  .comment {
+    background-color: $base-bg-color;
+    padding: $small-spacing $medium-spacing;
+    margin-bottom: $medium-spacing;
+    border-radius: 4px;
+    box-shadow: $base-box-shadow;
+    position: relative;
+
+    .employee {
+      font-weight: 600;
+      margin-bottom: $small-spacing;
+    }
+
+    svg {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      color: rgb(163, 36, 36);
+      opacity: 0.7;
+      font-size: 19px;
+      cursor: pointer;
+    }
+
+    .comment-date {
+      color: $secondary-accent-color;
+      font-weight: 600;
+      font-size: 13px;
+      text-align: end;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin-top: $small-spacing;
+    }
+  }
+}

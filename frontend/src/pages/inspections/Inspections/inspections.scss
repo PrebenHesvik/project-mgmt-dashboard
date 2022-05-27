@@ -1,0 +1,16 @@
+@import "../../../sass/styles.scss";
+#inspections-page {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
+    min-width: 100%;
+    padding: $large-spacing;
+    min-width: 100% !important;
+
+    .button-container {
+        margin-bottom: $medium-spacing;
+        display: flex;
+        justify-content: center;
+    }
+}

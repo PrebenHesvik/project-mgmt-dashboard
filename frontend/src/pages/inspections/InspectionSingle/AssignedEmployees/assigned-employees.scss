@@ -1,0 +1,61 @@
+@import "../../../../sass/styles.scss";
+
+.assigned-employee-cards {
+  box-shadow: $base-box-shadow;
+  background-color: $secondary-bg-color;
+  width: 30%;
+  padding: $medium-spacing;
+  min-width: 800px;
+  margin-bottom: $medium-spacing;
+  position: relative;
+  border-radius: $md-border-radius;
+
+  .title {
+    color: $secondary-accent-color;
+    font-size: 14px;
+    margin-bottom: $medium-spacing;
+    font-weight: 600;
+  }
+
+  #assigned-employee-cards-icon {
+    position: absolute;
+    right: 3px;
+    top: 2px;
+    color: $secondary-accent-color;
+    opacity: 0.8;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .cards-body {
+    display: flex;
+  }
+
+  .assigned-employee-card {
+    box-shadow: $base-box-shadow;
+    margin-right: $medium-spacing;
+    background-color: $base-bg-color;
+    padding: $base-spacing $medium-spacing $base-spacing $base-spacing;
+    position: relative;
+
+    .name {
+      font-size: 14px;
+      color: $secondary-font-color;
+    }
+
+    .position {
+      font-size: 13px;
+    }
+
+    svg {
+      position: absolute;
+      right: 3px;
+      bottom: 2px;
+      color: rgb(172, 61, 61);
+      opacity: 0.8;
+      font-weight: 800;
+      font-size: 17px;
+      cursor: pointer;
+    }
+  }
+}

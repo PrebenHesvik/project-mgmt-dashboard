@@ -1,0 +1,38 @@
+@import "./variables.scss";
+
+p {
+  font-family: $base-font-family;
+  line-height: $base-line-height;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font-family;
+  line-height: $heading-line-height;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  width: 100%;
+
+  &:hover {
+    outline: 0;
+  }
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1rem;
+}

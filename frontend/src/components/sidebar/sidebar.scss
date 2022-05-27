@@ -1,0 +1,65 @@
+@import "../../sass/styles";
+
+.sidebar {
+  flex: 1;
+  border-right: 0.5px solid $secondary-border-color;
+  min-height: 100vh;
+  background-color: $secondary-bg-color;
+
+  .top {
+    height: 50px;
+    display: flex;
+    align-items: center;
+   
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: $base-font-color;
+      text-align: center;
+    }
+  }
+
+  hr {
+    height: 0;
+    border: 0.5px solid $secondary-border-color;
+  }
+
+  .center {
+    padding-left: 10px;
+
+    ul {
+
+      .title {
+       font-size: 15px;
+        font-weight: bold;
+        color: $base-font-color;
+        margin-top: 15px;
+        margin-bottom: 5px;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $base-bg-color;
+        }
+
+        .icon {
+          font-size: 18px;
+          color: $secondary-accent-color;
+        }
+
+        span{
+            font-size: 16px;
+            font-weight: 600;
+            color: $tertiary-font-color;
+            margin-left: 10px;
+        }
+      }
+    }
+  }
+}
