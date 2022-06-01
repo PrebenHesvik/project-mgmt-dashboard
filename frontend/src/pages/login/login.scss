@@ -1,0 +1,21 @@
+@import '../../sass/styles.scss';
+
+#login-form-container {
+  @include flexbox;
+  @include justify-content(center);
+  height: 80vh;
+
+  #login-form {
+    margin-top: 10%;
+    background-color: $secondary-bg-color;
+    padding: $medium-spacing;
+    border-radius: $md-border-radius;
+    box-shadow: $base-box-shadow;
+    height: 350px;
+    width: 500px;
+    @include flexbox;
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    @include align-items(center);
+  }
+}

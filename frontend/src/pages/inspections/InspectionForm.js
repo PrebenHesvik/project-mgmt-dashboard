@@ -1,57 +1,59 @@
-import { useState, useEffect, useRef } from "react";
-import { useFormik } from "formik";
+import { useState, useEffect, useRef } from 'react';
+import { useFormik } from 'formik';
 import {
   useAddInspectionData,
   useEditInspectionData,
-} from "./../../hooks/InspectionQueries";
-import { useConstraints } from "../../hooks/useConstraints";
-import { StyledFormBox } from "../../components/common/StyledFormBox";
-import { StyledFormTitle } from "../../components/common/StyledFormTitle";
-import Button from "@mui/material/Button";
+} from './../../hooks/InspectionQueries';
+import { useConstraints } from '../../hooks/useConstraints';
+import { StyledFormBox } from '../../components/common/StyledFormBox';
+import { StyledFormTitle } from '../../components/common/StyledFormTitle';
+import Button from '@mui/material/Button';
 import {
   StyledTextField,
   StyledMenuItem,
-} from "./../../components/common/StyledTextField";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
+} from './../../components/common/StyledTextField';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Loading from './../../components/loading/Loading';
+import Error from './../../components/error/Error';
 
 const InspectionForm = ({ closeModal, defaults, inspectionId }) => {
-  const formTitle = useRef("Registrer ny inspeksjon");
+  const formTitle = useRef('Registrer ny inspeksjon');
   const { data: constraints, isLoading, isError, error } = useConstraints();
   const { mutate: addInspection } = useAddInspectionData();
   const { mutate: editInspection } = useEditInspectionData();
   const [inspection, setInspection] = useState({
-    customer_id: "",
-    description: "",
-    status: "",
-    inspection_year: "",
-    inspection_month: "",
+    customer_id: '',
+    description: '',
+    status: '',
+    inspection_year: '',
+    inspection_month: '',
   });
 
   const thisYear = new Date().getFullYear();
 
   const months = [
-    "Januar",
-    "Februar",
-    "Mars",
-    "April",
-    "Mai",
-    "Juni",
-    "Juli",
-    "August",
-    "September",
-    "Oktober",
-    "November",
-    "Desember",
+    'Januar',
+    'Februar',
+    'Mars',
+    'April',
+    'Mai',
+    'Juni',
+    'Juli',
+    'August',
+    'September',
+    'Oktober',
+    'November',
+    'Desember',
   ];
 
   useEffect(() => {
     if (defaults) {
       setInspection(defaults);
-      formTitle.current = "Oppdater opplysninger";
+      formTitle.current = 'Oppdater opplysninger';
     }
   }, []);
 
@@ -71,26 +73,26 @@ const InspectionForm = ({ closeModal, defaults, inspectionId }) => {
   });
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    <Loading />;
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    <Error error={error} />;
   }
 
   return (
     <>
       <StyledFormBox>
-        <StyledFormTitle variant="h6">{formTitle.current}</StyledFormTitle>
+        <StyledFormTitle variant='h6'>{formTitle.current}</StyledFormTitle>
       </StyledFormBox>
       <form onSubmit={formik.handleSubmit}>
         <StyledTextField
           fullWidth
           select
-          variant="filled"
-          id="customer_id"
-          name="customer_id"
-          label="Kunde"
+          variant='filled'
+          id='customer_id'
+          name='customer_id'
+          label='Kunde'
           value={formik.values.customer_id}
           onChange={formik.handleChange}
           error={
@@ -98,23 +100,23 @@ const InspectionForm = ({ closeModal, defaults, inspectionId }) => {
           }
           helperText={formik.touched.customer_id && formik.errors.customer_id}
         >
-          {constraints.data["customers"].map((customer) => {
+          {constraints.data['customers'].map((customer) => {
             return (
               <StyledMenuItem
-                key={customer["customer_id"]}
-                value={customer["customer_id"]}
+                key={customer['customer_id']}
+                value={customer['customer_id']}
               >
-                {customer["name"]}
+                {customer['name']}
               </StyledMenuItem>
             );
           })}
         </StyledTextField>
         <StyledTextField
           fullWidth
-          variant="filled"
-          id="description"
-          name="description"
-          label="Beskrivelse"
+          variant='filled'
+          id='description'
+          name='description'
+          label='Beskrivelse'
           value={formik.values.description}
           onChange={formik.handleChange}
           error={
@@ -125,16 +127,16 @@ const InspectionForm = ({ closeModal, defaults, inspectionId }) => {
         <StyledTextField
           fullWidth
           select
-          variant="filled"
-          id="status"
-          name="status"
-          label="Status"
+          variant='filled'
+          id='status'
+          name='status'
+          label='Status'
           value={formik.values.status}
           onChange={formik.handleChange}
           error={formik.touched.status && Boolean(formik.errors.status)}
           helperText={formik.touched.status && formik.errors.status}
         >
-          {constraints.data["wo_status"].map((status) => {
+          {constraints.data['wo_status'].map((status) => {
             return (
               <StyledMenuItem key={status} value={status}>
                 {status}
@@ -143,11 +145,11 @@ const InspectionForm = ({ closeModal, defaults, inspectionId }) => {
           })}
         </StyledTextField>
         <FormControl>
-          <FormLabel id="radio-year">Velg år</FormLabel>
+          <FormLabel id='radio-year'>Velg år</FormLabel>
           <RadioGroup
-            aria-labelledby="radio-year"
+            aria-labelledby='radio-year'
             defaultValue={thisYear}
-            name="inspection_year"
+            name='inspection_year'
             value={formik.values.inspection_year}
             onChange={formik.handleChange}
             row
@@ -166,10 +168,10 @@ const InspectionForm = ({ closeModal, defaults, inspectionId }) => {
         <StyledTextField
           fullWidth
           select
-          variant="filled"
-          id="inspection_month"
-          name="inspection_month"
-          label="Måned"
+          variant='filled'
+          id='inspection_month'
+          name='inspection_month'
+          label='Måned'
           value={formik.values.inspection_month}
           onChange={formik.handleChange}
           error={
@@ -189,7 +191,7 @@ const InspectionForm = ({ closeModal, defaults, inspectionId }) => {
           })}
         </StyledTextField>
 
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <Button color='primary' variant='contained' fullWidth type='submit'>
           Submit
         </Button>
       </form>

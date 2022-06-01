@@ -1,31 +1,34 @@
-import { useState, useEffect, useRef } from "react";
-import { useFormik } from "formik";
-import Button from "@mui/material/Button";
+import { useState, useEffect, useRef } from 'react';
+import { useFormik } from 'formik';
+import Button from '@mui/material/Button';
 import {
   useAddEmployeeData,
   useEditEmployeeData,
-} from "../../hooks/employeeQueries";
-import { useConstraints } from "../../hooks/useConstraints";
+} from '../../hooks/employeeQueries';
+import { useConstraints } from '../../hooks/useConstraints';
 import {
   StyledTextField,
   StyledMenuItem,
-} from "../../components/common/StyledTextField";
-import { StyledFormBox } from "../../components/common/StyledFormBox";
-import { StyledFormTitle } from "../../components/common/StyledFormTitle";
+} from '../../components/common/StyledTextField';
+import { StyledFormBox } from '../../components/common/StyledFormBox';
+import { StyledFormTitle } from '../../components/common/StyledFormTitle';
+import Error from './../../components/error/Error';
+import Loading from './../../components/loading/Loading';
 
 const EmployeeForm = ({ closeModal, defaults, employeeId }) => {
-  const formTitle = useRef("Registrer ny ansatt");
+  const formTitle = useRef('Registrer ny ansatt');
   const [employee, setEmployee] = useState({
-    name: "",
-    position: "",
-    email: "",
-    region_name: "",
+    name: '',
+    position: '',
+    email: '',
+    region_name: '',
+    is_active: '',
   });
 
   useEffect(() => {
     if (defaults) {
       setEmployee(defaults);
-      formTitle.current = "Oppdater opplysninger";
+      formTitle.current = 'Oppdater opplysninger';
     }
   }, []);
 
@@ -41,7 +44,7 @@ const EmployeeForm = ({ closeModal, defaults, employeeId }) => {
         }
         closeModal();
       } else {
-        console.log("something is wrong");
+        console.log('something is wrong');
       }
     },
   });
@@ -51,23 +54,23 @@ const EmployeeForm = ({ closeModal, defaults, employeeId }) => {
   const { mutate: editEmployee } = useEditEmployeeData();
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    <Loading />;
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    <Error error={error} />;
   }
 
   return (
     <StyledFormBox>
-      <StyledFormTitle variant="h6">{formTitle.current}</StyledFormTitle>
+      <StyledFormTitle variant='h6'>{formTitle.current}</StyledFormTitle>
       <form onSubmit={formik.handleSubmit}>
         <StyledTextField
           fullWidth
-          variant="filled"
-          id="name"
-          name="name"
-          label="Navn"
+          variant='filled'
+          id='name'
+          name='name'
+          label='Navn'
           value={formik.values.name}
           onChange={formik.handleChange}
           error={formik.touched.name && Boolean(formik.errors.name)}
@@ -76,16 +79,16 @@ const EmployeeForm = ({ closeModal, defaults, employeeId }) => {
         <StyledTextField
           fullWidth
           select
-          variant="filled"
-          id="position"
-          name="position"
-          label="Stilling"
+          variant='filled'
+          id='position'
+          name='position'
+          label='Stilling'
           value={formik.values.position}
           onChange={formik.handleChange}
           error={formik.touched.position && Boolean(formik.errors.position)}
           helperText={formik.touched.position && formik.errors.position}
         >
-          {constraints.data["positions"].map((item) => {
+          {constraints.data['positions'].map((item) => {
             return (
               <StyledMenuItem key={item} value={item}>
                 {item}
@@ -96,11 +99,11 @@ const EmployeeForm = ({ closeModal, defaults, employeeId }) => {
         {!defaults ? (
           <StyledTextField
             fullWidth
-            variant="filled"
-            id="email"
-            name="email"
-            label="Email"
-            type="email"
+            variant='filled'
+            id='email'
+            name='email'
+            label='Email'
+            type='email'
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
@@ -110,10 +113,10 @@ const EmployeeForm = ({ closeModal, defaults, employeeId }) => {
         <StyledTextField
           fullWidth
           select
-          variant="filled"
-          id="region_name"
-          name="region_name"
-          label="Region"
+          variant='filled'
+          id='region_name'
+          name='region_name'
+          label='Region'
           value={formik.values.region_name}
           onChange={formik.handleChange}
           error={
@@ -121,11 +124,34 @@ const EmployeeForm = ({ closeModal, defaults, employeeId }) => {
           }
           helperText={formik.touched.region_name && formik.errors.region_name}
         >
-          {constraints.data["regions"].map((item) => {
+          {constraints.data['regions'].map((item) => {
             return <StyledMenuItem value={item}>{item}</StyledMenuItem>;
           })}
         </StyledTextField>
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <StyledTextField
+          fullWidth
+          select
+          variant='filled'
+          id='is_active'
+          name='is_active'
+          label='Aktiv'
+          value={formik.values.is_active}
+          onChange={formik.handleChange}
+          error={formik.touched.is_active && Boolean(formik.errors.is_active)}
+          helperText={formik.touched.is_active && formik.errors.is_active}
+        >
+          {[
+            ['Aktiv', true],
+            ['Deaktivert', false],
+          ].map((item) => {
+            return (
+              <StyledMenuItem key={item[1]} value={item[1]}>
+                {item[0]}
+              </StyledMenuItem>
+            );
+          })}
+        </StyledTextField>
+        <Button color='primary' variant='contained' fullWidth type='submit'>
           Submit
         </Button>
       </form>
